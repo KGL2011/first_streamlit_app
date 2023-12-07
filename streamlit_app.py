@@ -29,3 +29,7 @@ streamlit.header('Fruityvice Fruit Advice!')
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
 
+# Fix json data to have proper caps and formatting
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# Make grid and list response like menu fruit lists above
+streamlit.dataframe(fruityvice_normalized)
